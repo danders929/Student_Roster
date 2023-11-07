@@ -20,7 +20,7 @@ The backend consists of an [Express](https://expressjs.com/) server with a SQLit
 
 API routes can be found in `src/server/api/`.
 
-Authentication is handled with [JWT](https://github.com/auth0/node-jsonwebtoken). User passwords are hashed with [bcrypt](https://github.com/kelektiv/node.bcrypt.js).
+<!-- Authentication is handled with [JWT](https://github.com/auth0/node-jsonwebtoken). User passwords are hashed with [bcrypt](https://github.com/kelektiv/node.bcrypt.js). -->
 
 ![Database schema as described below](database_schema.svg)
 
@@ -28,20 +28,14 @@ Authentication is handled with [JWT](https://github.com/auth0/node-jsonwebtoken)
 <summary>Expand to see DBML</summary>
 
 ```dbml
-Table User {
-  id        Serial  [pk]
-  username  String
-  password  String
+Table Student {
+  id        Int      [pk]
+  firstName String   [not null]
+  lastName  String   [not null]
+  email     String   [unique]
+  imageUrl  String   [default("")]
+  gpa       Float    
 }
-
-Table Task {
-  id          Serial  [pk]
-  description String
-  done        Boolean
-  userId      Int
-}
-
-Ref: User.id < Task.userId
 ```
 
 </details>
