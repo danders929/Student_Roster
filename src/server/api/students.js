@@ -12,8 +12,8 @@ router.get('/', async (req, res, next) => {
     // res.send('You have reached the students page!')
 
     // for actual GET request for all students:
-    // const students = await prisma.student.findMany();
-    // res.json(students);
+    const students = await prisma.student.findMany();
+    res.json(students);
   } catch (err) {
     next(err);
   }
