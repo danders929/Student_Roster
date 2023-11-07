@@ -21,7 +21,8 @@ const createApp = async () => {
   app.use(express.urlencoded({ extended: true }));
 
   // API routes
-  
+  app.use("/api", require("./api"));
+
   // /api/students
   app.use("/api/students", require("./api/students"));
 
