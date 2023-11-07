@@ -16,6 +16,9 @@ module.exports = router;
 router.get('/', async (req, res, next) => {
   try {
     console.log('You have reached /api/students page')
+    // **boilerplate for actual GET request for all students:
+    // const students = await prisma.student.findMany();
+    // res.json(students);
     res.json('You have reached the students page!')
   } catch (err) {
     next(err);
