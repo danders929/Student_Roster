@@ -22,9 +22,17 @@ API routes can be found in `src/server/api/`.
 
 <!-- Authentication is handled with [JWT](https://github.com/auth0/node-jsonwebtoken). User passwords are hashed with [bcrypt](https://github.com/kelektiv/node.bcrypt.js). -->
 
+To seed database, do the following:
+   - create .env file in root directory using the code from example.env from the template.
+   - in your terminal run the following commands:
+      - npm i
+      - npx prisma migrate dev
+   - Use npx prisma studio to view database
+   
 ![Database schema as described below](database_schema.svg)
 
 <details>
+
 <summary>Expand to see DBML</summary>
 
 ```dbml
@@ -33,7 +41,7 @@ Table Student {
   firstName String   [not null]
   lastName  String   [not null]
   email     String   [unique]
-  imageUrl  String   [default("")]
+  imageUrl  String   [default("blank_image")]
   gpa       Float    
 }
 ```
