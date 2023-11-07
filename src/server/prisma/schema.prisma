@@ -15,6 +15,6 @@ model Student {
   firstName String 
   lastName  String 
   email     String @unique
-  imageUrl  String @default("")
+  imageUrl  String @default("blank_image")
   gpa       Float  
 }
