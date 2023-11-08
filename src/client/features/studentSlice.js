@@ -16,7 +16,7 @@ const studentsApi = api.injectEndpoints({
         method: "POST",
         body: studentData,
       }),
-    }),
+    }), 
 
     updateStudent: builder.mutation({
       query: (studentData) => ({
@@ -42,3 +42,4 @@ export const {
   useUpdateStudentMutation,
   useDeleteStudentMutation,
 } = studentsApi;
+//added student slice
