@@ -60,3 +60,23 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+// /api/:id - DELETE, deletes a student by id number
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const id = +req.params.id
+    const result = await prisma.student.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    if (!result) {
+      return next({
+        status: 404,
+        message: `Could not find student with id ${id}`
+      });
+    }
+    res.json(result)
+  } catch (err) {
+    next(err);
+  }
+})
