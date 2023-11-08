@@ -1,4 +1,4 @@
-import { useGetStudentsQuery } from "./studentSlice"
+import { useGetStudentsQuery } from "../studentSlice"
 
 export const StudentCard = ({ student }) => {
     return(
