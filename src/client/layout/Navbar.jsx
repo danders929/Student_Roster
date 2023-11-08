@@ -26,9 +26,9 @@ export default function Navbar() {
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
-        {/* <li>
-          <NavLink to="/api/students">Students</NavLink>
-        </li> */}
+        <li>
+          <NavLink to="/students">Students</NavLink>
+        </li> 
         {token ? (
           <li>
             <a onClick={handleLogout}>Log Out</a>

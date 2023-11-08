@@ -9,7 +9,8 @@ import store from "./store";
 import AuthForm from "./features/auth/AuthForm";
 import Tasks from "./features/tasks/Tasks";
 import Root from "./layout/Root.jsx";
-// import Students component here
+
+import StudentList from "./features/students/students.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Tasks /> },
       { path: "/tasks", element: <Tasks /> },
       { path: "/login", element: <AuthForm /> },
-      // { path: "/api/students", element: <Students /> } // confirm this student component is correct
+      { path: "/students", element: <StudentList /> }
     ],
   },
 ]);
