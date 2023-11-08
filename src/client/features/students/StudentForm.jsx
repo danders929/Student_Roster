@@ -1,4 +1,4 @@
-// import useAddStudentMutation here 
+import { useCreateStudentMutation } from "../studentSlice";
 import { useState } from "react"
 
 
@@ -6,14 +6,17 @@ function StudentForm() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
-  // const [addStudent] = useAddStudentMutation
+  const [gpa, setGpa] = useState('');
+  const [createStudent] = useCreateStudentMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addStudent(firstName, lastName, email);
+    const gpaNumber = +gpa
+    createStudent({firstName, lastName, email, gpa: gpaNumber});
     setFirstName('');
     setLastName('');
     setEmail('');
+    setGpa('');
   };
 
 
@@ -32,10 +35,12 @@ function StudentForm() {
           Email:
           <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
+        <label>
+          GPA:
+          <input type="number" value={gpa} onChange={(e) => setGpa(e.target.value)} />
+        </label>
         <button>Add Student</button>
       </form>
-
-
     </>
 
   )
