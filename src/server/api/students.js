@@ -20,7 +20,7 @@ router.get('/', async (req, res, next) => {
 });
 
 // /api/students/:id - GET the details of student specified by the id
-router.get('/:id', async (req, res, next)=> {
+router.get('/:id', async (req, res, next) => {
   try {
     const id = +req.params.id
     const result = await prisma.student.findUnique({
@@ -39,4 +39,24 @@ router.get('/:id', async (req, res, next)=> {
     next(err);
   }
 })
+
+// /api/students - POST, create a new student
+router.post('/', async (req, res, next) => {
+  try {
+    const { firstName, lastName, email, gpa } = req.body
+    if (!firstName || !lastName || !email) {
+      const error = {
+        status: 400,
+        message: 'Must provide title & content.',
+      };
+      return next(error);
+    };
+    const newStudent = await prisma.student.create({
+      data: { firstName: firstName, lastName: lastName, email: email, gpa: gpa }
+    })
+    res.json(newStudent);
+  } catch (err) {
+    next(err);
+  }
+});
 
