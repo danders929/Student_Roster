@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useGetStudentsQuery } from "./studentSlice"
 
 export const StudentCard = ({ student }) => {
@@ -18,19 +17,20 @@ export const StudentCard = ({ student }) => {
     );
 }
 
+
 export default function StudentList() {
 // insert useGetStudentsQuery, should look like this
 
-const { data: S, error, isLoading } = useGetStudentsQuery();
+const { data: students, error, isLoading } = useGetStudentsQuery();
 if (isLoading) return <div> Loading . . . </div>
 if (error) return <div> Error . . . </div>
-const student = S?.student
+// const students = S?.student
 
-
+console.log(students)
     return(
         <>
         <ul>
-            { student?.map((S) => (
+            { students?.map((S) => (
                 <StudentCard key = {S.id} student = {S} />
             )) }
 
