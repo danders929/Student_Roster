@@ -2,16 +2,13 @@ import api from "../../store/api";
 
 const studentsApi = api.injectEndpoints({
   endpoints: (builder) => ({
-
     getStudents: builder.query({
       query: () => "/students",
     }),
 
-
     getStudentById: builder.query({
       query: (id) => `/students/${id}`,
     }),
-
 
     createStudent: builder.mutation({
       query: (studentData) => ({
@@ -21,7 +18,6 @@ const studentsApi = api.injectEndpoints({
       }),
     }),
 
-
     updateStudent: builder.mutation({
       query: (studentData) => ({
         url: `/students/${studentData.id}`,
@@ -30,7 +26,6 @@ const studentsApi = api.injectEndpoints({
       }),
     }),
 
-  
     deleteStudent: builder.mutation({
       query: (id) => ({
         url: `/students/${id}`,
