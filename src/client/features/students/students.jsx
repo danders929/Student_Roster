@@ -1,5 +1,6 @@
 import { useGetStudentsQuery } from "../studentSlice"
 import StudentForm from "./StudentForm";
+import { Link } from "react-router-dom";
 
 export const StudentCard = ({ student }) => {
   return (
@@ -12,6 +13,7 @@ export const StudentCard = ({ student }) => {
           <h2>{student.firstName} {student.lastName}</h2>
           <h3>{student.email}</h3>
           <p>{student.gpa}</p>
+          <Link to={`/students/${student.id}`}> See Details </Link>
         </section>
       </li>
     </>
