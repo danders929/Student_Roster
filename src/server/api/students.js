@@ -19,3 +19,24 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+// /api/students/:id - GET the details of student specified by the id
+router.get('/:id', async (req, res, next)=> {
+  try {
+    const id = +req.params.id
+    const result = await prisma.student.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    if (!result) {
+      return next({
+        status: 404,
+        message: `Could not find student with id ${id}`
+      });
+    }
+    res.json(result)
+  } catch (err) {
+    next(err);
+  }
+})
+
