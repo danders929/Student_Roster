@@ -6,16 +6,18 @@ function StudentForm() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [gpa, setGpa] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [createStudent] = useCreateStudentMutation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const gpaNumber = +gpa;
-    createStudent({ firstName, lastName, email, gpa: gpaNumber });
+    createStudent({ firstName, lastName, email, gpa: gpaNumber, imageUrl });
     setFirstName("");
     setLastName("");
     setEmail("");
     setGpa("");
+    setImageUrl("");
   };
 
   return (
@@ -53,6 +55,14 @@ function StudentForm() {
             onChange={(e) => setGpa(e.target.value)}
           />
         </label>
+        <label>
+            Image URL:
+            <input
+              type="text"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+            />
+          </label>
         <button>Add Student</button>
       </form>
     </>
