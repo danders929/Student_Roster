@@ -40,7 +40,7 @@ router.post("/", async (req, res, next) => {
     if (!firstName || !lastName || !email) {
       const error = {
         status: 400,
-        message: "Must provide title & content.",
+        message: "Must provide first name, last name, and email.",
       };
       return next(error);
     }
