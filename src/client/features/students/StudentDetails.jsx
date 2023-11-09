@@ -19,7 +19,7 @@ export default function StudentDetails() {
       </h1>
       <p>{student.email}</p>
       <p>{student.gpa}</p>
-      <UpdateStudentForm studentId={id} />
+      <UpdateStudentForm studentId={id} student={student} />
     </main>
   );
 }
