@@ -6,22 +6,25 @@ function UpdateStudentForm({ studentId }) {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [gpa, setGpa] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [updateStudent] = useUpdateStudentMutation();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const gpaNumber = +gpa;
-    updateStudent({
+    await updateStudent({
       id: studentId,
       firstName,
       lastName,
       email,
       gpa: gpaNumber,
+      imageUrl
     });
     setFirstName("");
     setLastName("");
     setEmail("");
     setGpa("");
+    setImageUrl("");
   };
 
   return (
@@ -58,6 +61,14 @@ function UpdateStudentForm({ studentId }) {
               type="number"
               value={gpa}
               onChange={(e) => setGpa(e.target.value)}
+            />
+          </label>
+          <label>
+            Image URL:
+            <input
+              type="text"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
             />
           </label>
           <button>Update Student</button>

@@ -1,19 +1,11 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useGetStudentByIdQuery } from "./studentSlice";
-import { useDeleteStudentMutation } from "./studentSlice";
 import UpdateStudentForm from "./updateStudent";
 
 // Shows the details of a single student
 export default function StudentDetails() {
   const { id } = useParams();
   const { data: student, isLoading } = useGetStudentByIdQuery(id);
-  const [deleteStudent] = useDeleteStudentMutation(id);
-  const navigate = useNavigate();
-
-  const handleDelete = () => {
-    deleteStudent(id);
-    navigate("/students");
-  };
 
   // Returns a loading message while query is running
   return isLoading ? (
@@ -21,8 +13,6 @@ export default function StudentDetails() {
   ) : (
     // Returns student details from query
     <main className="student-details">
-      <br />
-      <button onClick={handleDelete}>X</button>
       <img src={student.imageUrl} />
       <h1>
         {student.firstName} {student.lastName}
