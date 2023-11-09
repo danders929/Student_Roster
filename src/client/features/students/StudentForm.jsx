@@ -25,7 +25,7 @@ function StudentForm() {
       <form onSubmit={handleSubmit}>
         <label>
           First Name:
-          <input
+          <input required
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -33,7 +33,7 @@ function StudentForm() {
         </label>
         <label>
           Last Name:
-          <input
+          <input required
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -41,8 +41,8 @@ function StudentForm() {
         </label>
         <label>
           Email:
-          <input
-            type="text"
+          <input required
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
