@@ -3,12 +3,12 @@ import { useState } from "react";
 
 const defaultImage = '/blank-profile-picture.svg';
 
-function UpdateStudentForm({ studentId }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [gpa, setGpa] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+function UpdateStudentForm({ studentId, student }) {
+  const [firstName, setFirstName] = useState(student.firstName || "");
+  const [lastName, setLastName] = useState(student.lastName || "");
+  const [email, setEmail] = useState(student.email || "");
+  const [gpa, setGpa] = useState(student.gpa || "");
+  const [imageUrl, setImageUrl] = useState(student.imageUrl || "");
   const [updateStudent] = useUpdateStudentMutation();
 
   const handleSubmit = async (e) => {
@@ -27,17 +27,17 @@ function UpdateStudentForm({ studentId }) {
       gpa: gpaNumber,
       imageUrl: finalImageUrl
     });
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setGpa("");
-    setImageUrl("");
+    setFirstName(firstName);
+    setLastName(lastName);
+    setEmail(email);
+    setGpa(gpa);
+    setImageUrl(imageUrl);
   };
 
   return (
     <>
       <div>
-        <form className="updata-student-form" onSubmit={handleSubmit}>
+        <form className="update-student-form" onSubmit={handleSubmit}>
           <label>
             First Name:
             <input required
