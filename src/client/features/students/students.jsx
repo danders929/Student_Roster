@@ -1,8 +1,6 @@
-import { useGetStudentsQuery } from "../studentSlice"
+import { useGetStudentsQuery } from "./studentSlice";
 import StudentForm from "./StudentForm";
 import { Link } from "react-router-dom";
-import UpdateStudentForm from "./updateStudent";
-
 
 export const StudentCard = ({ student }) => {
   return (
@@ -12,27 +10,23 @@ export const StudentCard = ({ student }) => {
           <img src="  " />
         </div>
         <section className="student-info">
-          <h2>{student.firstName} {student.lastName}</h2>
+          <h2>
+            {student.firstName} {student.lastName}
+          </h2>
           <h3>{student.email}</h3>
           <p>{student.gpa}</p>
           <Link to={`/students/${student.id}`}> See Details </Link>
         </section>
       </li>
     </>
-
   );
-}
-
+};
 
 export default function StudentList() {
-  // insert useGetStudentsQuery, should look like this
-
   const { data: students, error, isLoading } = useGetStudentsQuery();
-  if (isLoading) return <div> Loading . . . </div>
-  if (error) return <div> Error . . . </div>
-  // const students = S?.student
+  if (isLoading) return <div> Loading . . . </div>;
+  if (error) return <div> Error . . . </div>;
 
-  console.log(students)
   return (
     <>
       <StudentForm />
@@ -40,13 +34,6 @@ export default function StudentList() {
         {students?.map((S) => (
           <StudentCard key={S.id} student={S} />
         ))}
-
-        {/* this is for testing purposes, when I have data Ill be able to use the code above
-            <div>first name</div>
-            <div>last name</div>
-            <div>email</div>
-            <div>image</div>
-            <div>GPA 2.1</div> */}
       </ul>
     </>
   );
