@@ -62,19 +62,14 @@ router.post('/', async (req, res, next) => {
 
 router.patch('/:id', async (req, res, next) => {
   try{
-    // const id = +req.params.id
-    
+    const id = +req.params.id
 
-    const { id, firstName, lastName, email, gpa } = req.body
-
-
+    const { firstName, lastName, email, gpa } = req.body
 
     const updateStudent = await prisma.student.update({
       where: {id: id },
       data: { firstName: firstName, lastName: lastName, email: email, gpa: gpa }
     })
-
-      console.log(payload.error)
 
     res.json(updateStudent);
   } catch(err) {

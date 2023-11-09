@@ -9,6 +9,7 @@ const studentsApi = api.injectEndpoints({
 
     getStudentById: builder.query({
       query: (id) => `/students/${id}`,
+      providesTags: ["Student"]
     }),
 
     createStudent: builder.mutation({
@@ -26,7 +27,7 @@ const studentsApi = api.injectEndpoints({
         method: "PATCH",
          body: studentData,
       }),
-      invalidatesTags: ["Students"]
+      invalidatesTags: ["Students", "Student"]
     }),
 
     deleteStudent: builder.mutation({
