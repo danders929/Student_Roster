@@ -1,8 +1,17 @@
-import { useGetStudentsQuery } from "./studentSlice";
+import { useGetStudentsQuery, useDeleteStudentMutation } from "./studentSlice";
 import StudentForm from "./StudentForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 export const StudentCard = ({ student }) => {
+  // Delete Handle function
+  const navigate = useNavigate();
+  const [deleteStudent] = useDeleteStudentMutation();
+  const handleDelete = () => {
+    deleteStudent(student.id);
+    navigate("/students");
+  };
+
   return (
     <>
       <li className="student-name">
@@ -18,6 +27,7 @@ export const StudentCard = ({ student }) => {
           <Link to={`/students/${student.id}`}> See Details </Link>
         </section>
       </li>
+      <button className="deleteButton" onClick={handleDelete}>X</button>
     </>
   );
 };
