@@ -27,7 +27,7 @@ function UpdateStudentForm({ studentId }) {
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit}>
+        <form className="updata-student-form" onSubmit={handleSubmit}>
           <label>
             First Name:
             <input

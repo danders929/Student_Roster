@@ -20,7 +20,7 @@ function StudentForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="add-student-form" onSubmit={handleSubmit}>
         <label>
           First Name:
           <input

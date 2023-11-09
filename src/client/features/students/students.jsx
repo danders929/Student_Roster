@@ -1,23 +1,26 @@
 import { useGetStudentsQuery } from "./studentSlice";
 import StudentForm from "./StudentForm";
 import { Link } from "react-router-dom";
+import "./studentList.less";
 
 export const StudentCard = ({ student }) => {
   return (
     <>
-      <li className="student-name">
-        <div className="student-image">
-          <img src="  " />
-        </div>
-        <section className="student-info">
+      <div className="student-card">
+        <li className="student-name">
           <h2>
             {student.firstName} {student.lastName}
           </h2>
+        </li>
+        <div className="student-image">
+          <img src={student.imageUrl} />
+        </div>
+        <section className="student-info">
           <h3>{student.email}</h3>
           <p>{student.gpa}</p>
           <Link to={`/students/${student.id}`}> See Details </Link>
         </section>
-      </li>
+      </div>
     </>
   );
 };
