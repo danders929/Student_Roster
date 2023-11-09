@@ -82,3 +82,45 @@ router.patch('/:id', async (req, res, next) => {
   }
 });
 
+router.patch('/:id', async (req, res, next) => {
+  try{
+    // const id = +req.params.id
+    
+
+    const { id, firstName, lastName, email, gpa } = req.body
+
+
+
+    const updateStudent = await prisma.student.update({
+      where: {id: id },
+      data: { firstName: firstName, lastName: lastName, email: email, gpa: gpa }
+    })
+
+      console.log(payload.error)
+
+    res.json(updateStudent);
+  } catch(err) {
+    next(err);
+  }
+});
+
+// /api/:id - DELETE, deletes a student by id number
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const id = +req.params.id
+    const result = await prisma.student.delete({
+      where: {
+        id: id,
+      },
+    });
+    if (!result) {
+      return next({
+        status: 404,
+        message: `Could not find student with id ${id}`
+      });
+    }
+    res.json(result)
+  } catch (err) {
+    next(err);
+  }
+})
