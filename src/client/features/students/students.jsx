@@ -16,7 +16,7 @@ export const StudentCard = ({ student }) => {
     <>
       <li className="student-name">
         <div className="student-image">
-          <img src="  " />
+          <img src={student.imageUrl} alt="profile-picture" />
         </div>
         <section className="student-info">
           <h2>
