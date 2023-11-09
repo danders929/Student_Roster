@@ -14,6 +14,7 @@ import StudentList from "./features/students/students.jsx";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import StudentDetails from "./features/StudentDetails.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       { path: "/tasks", element: <Tasks /> },
       { path: "/login", element: <AuthForm /> },
       { path: "/students", element: <StudentList /> },
-      { path: "/students/:id", element: <StudentDetails />}
+      { path: "/students/:id", element: <StudentDetails />},
     ],
   },
 ]);

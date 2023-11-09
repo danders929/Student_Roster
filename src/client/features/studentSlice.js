@@ -24,7 +24,7 @@ const studentsApi = api.injectEndpoints({
       query: (studentData) => ({
         url: `/students/${studentData.id}`,
         method: "PATCH",
-        body: studentData,
+         body: studentData,
       }),
       invalidatesTags: ["Students"]
     }),

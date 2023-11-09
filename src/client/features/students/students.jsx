@@ -1,6 +1,8 @@
 import { useGetStudentsQuery } from "../studentSlice"
 import StudentForm from "./StudentForm";
 import { Link } from "react-router-dom";
+import UpdateStudentForm from "./updateStudent";
+
 
 export const StudentCard = ({ student }) => {
   return (

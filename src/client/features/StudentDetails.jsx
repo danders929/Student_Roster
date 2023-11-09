@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useGetStudentByIdQuery } from '../features/studentSlice'
+import UpdateStudentForm from "./students/updateStudent";
 
 // Shows the details of a single student
 export default function StudentDetails() {
@@ -16,6 +17,7 @@ export default function StudentDetails() {
       <h1>{student.firstName} {student.lastName}</h1>
       <p>{student.email}</p>
       <p>{student.gpa}</p>
+      <UpdateStudentForm />
     </main>
   );
 }
