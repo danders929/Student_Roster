@@ -36,7 +36,7 @@ router.get("/:id", async (req, res, next) => {
 // /api/students - POST, create a new student
 router.post("/", async (req, res, next) => {
   try {
-    const { firstName, lastName, email, gpa } = req.body;
+    const { firstName, lastName, email, gpa, imageUrl } = req.body;
     if (!firstName || !lastName || !email) {
       const error = {
         status: 400,
@@ -50,6 +50,7 @@ router.post("/", async (req, res, next) => {
         lastName: lastName,
         email: email,
         gpa: gpa,
+        imageUrl: imageUrl
       },
     });
     res.json(newStudent);
@@ -58,11 +59,12 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+// /api/students/:id - PATCH, updates a student by id number
 router.patch("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
 
-    const { firstName, lastName, email, gpa } = req.body;
+    const { firstName, lastName, email, gpa, imageUrl } = req.body;
 
     const updateStudent = await prisma.student.update({
       where: { id: id },
@@ -71,6 +73,7 @@ router.patch("/:id", async (req, res, next) => {
         lastName: lastName,
         email: email,
         gpa: gpa,
+        imageUrl: imageUrl
       },
     });
 
@@ -80,29 +83,7 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/:id", async (req, res, next) => {
-  try {
-    const { id, firstName, lastName, email, gpa } = req.body;
-
-    const updateStudent = await prisma.student.update({
-      where: { id: id },
-      data: {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        gpa: gpa,
-      },
-    });
-
-    console.log(payload.error);
-
-    res.json(updateStudent);
-  } catch (err) {
-    next(err);
-  }
-});
-
-// /api/:id - DELETE, deletes a student by id number
+// /api/students/:id - DELETE, deletes a student by id number
 router.delete("/:id", async (req, res, next) => {
   try {
     const id = +req.params.id;
