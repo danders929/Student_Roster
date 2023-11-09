@@ -27,7 +27,7 @@ export default function StudentDetails() {
       <h1>{student.firstName} {student.lastName}</h1>
       <p>{student.email}</p>
       <p>{student.gpa}</p>
-      <UpdateStudentForm />
+    <UpdateStudentForm studentId = {id} />
     </main>
   );
 }

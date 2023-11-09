@@ -1,13 +1,8 @@
-import { useGetStudentByIdQuery, useUpdateStudentMutation } from "../studentSlice";
+import { useUpdateStudentMutation } from "../studentSlice";
 import { useState } from "react";
-import { useParams } from "react-router";
 
-function UpdateStudentForm() {
-    // const { id }  = useParams()
-    // const { data: student, isLoading } = useGetStudentByIdQuery();
-
+function UpdateStudentForm({studentId}) {
     
-
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,7 +12,7 @@ function UpdateStudentForm() {
     const handleSubmit = (e) => {
         e.preventDefault();
         const gpaNumber = +gpa
-        updateStudent({  firstName, lastName, email, gpa: gpaNumber});
+        updateStudent({  id: studentId, firstName, lastName, email, gpa: gpaNumber});
         setFirstName('');
         setLastName('');
         setEmail('');
