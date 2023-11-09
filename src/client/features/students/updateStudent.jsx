@@ -1,12 +1,12 @@
 import { useUpdateStudentMutation } from "./studentSlice";
 import { useState } from "react";
 
-function UpdateStudentForm({ studentId }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [gpa, setGpa] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+function UpdateStudentForm({ studentId, student }) {
+  const [firstName, setFirstName] = useState(student.firstName || "");
+  const [lastName, setLastName] = useState(student.lastName || "");
+  const [email, setEmail] = useState(student.email || "");
+  const [gpa, setGpa] = useState(student.gpa || "");
+  const [imageUrl, setImageUrl] = useState(student.imageUrl || "");
   const [updateStudent] = useUpdateStudentMutation();
 
   const handleSubmit = async (e) => {
