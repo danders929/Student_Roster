@@ -20,11 +20,11 @@ function UpdateStudentForm({ studentId, student }) {
       gpa: gpaNumber,
       imageUrl
     });
-    setFirstName("");
-    setLastName("");
-    setEmail("");
-    setGpa("");
-    setImageUrl("");
+    setFirstName(firstName);
+    setLastName(lastName);
+    setEmail(email);
+    setGpa(gpa);
+    setImageUrl(imageUrl);
   };
 
   return (
