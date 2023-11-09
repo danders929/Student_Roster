@@ -1,6 +1,8 @@
 import { useUpdateStudentMutation } from "./studentSlice";
 import { useState } from "react";
 
+const defaultImage = '/blank-profile-picture.svg';
+
 function UpdateStudentForm({ studentId, student }) {
   const [firstName, setFirstName] = useState(student.firstName || "");
   const [lastName, setLastName] = useState(student.lastName || "");
@@ -11,6 +13,11 @@ function UpdateStudentForm({ studentId, student }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // finalImageUrl removes any white spaces using trim, and then checks that the value does not equal "".
+    // if that returns true then it uses the imageUrl value that was supplied through the form.
+    // if it returns false, then it useses the default profile picture.
+    const finalImageUrl = imageUrl.trim() !== "" ? imageUrl : defaultImage;
     const gpaNumber = +gpa;
     await updateStudent({
       id: studentId,
@@ -18,7 +25,7 @@ function UpdateStudentForm({ studentId, student }) {
       lastName,
       email,
       gpa: gpaNumber,
-      imageUrl
+      imageUrl: finalImageUrl
     });
     setFirstName(firstName);
     setLastName(lastName);
@@ -30,7 +37,7 @@ function UpdateStudentForm({ studentId, student }) {
   return (
     <>
       <div>
-        <form className="updata-student-form" onSubmit={handleSubmit}>
+        <form className="update-student-form" onSubmit={handleSubmit}>
           <label>
             First Name:
             <input required
