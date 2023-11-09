@@ -1,6 +1,8 @@
 import { useCreateStudentMutation } from "./studentSlice";
 import { useState } from "react";
 
+const defaultImage = '/blank-profile-picture.svg';
+
 function StudentForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -11,8 +13,13 @@ function StudentForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // finalImageUrl removes any white spaces using trim, and then checks that the value does not equal "".
+    // if that returns true then it uses the imageUrl value that was supplied through the form.
+    // if it returns false, then it useses the default profile picture.
+    const finalImageUrl = imageUrl.trim() !== "" ? imageUrl : defaultImage;
     const gpaNumber = +gpa;
-    createStudent({ firstName, lastName, email, gpa: gpaNumber, imageUrl });
+    createStudent({ firstName, lastName, email, gpa: gpaNumber, imageUrl: finalImageUrl });
     setFirstName("");
     setLastName("");
     setEmail("");
