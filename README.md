@@ -1,6 +1,4 @@
-# Full-stack Template
-
-This template provides a fully functional CRUD app. Once a user has successfully registered for an account and logged in, they can see their existing tasks, create new tasks, update existing tasks, and delete tasks.
+# Student Roster
 
 ## Getting Started
 
